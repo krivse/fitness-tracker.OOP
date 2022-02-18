@@ -24,6 +24,7 @@ class Training:
     """Базовый класс тренировки."""
     LEN_STEP: float = 0.65
     M_IN_KM: int = 1000
+    MINUTES: int = 60
 
     def __init__(self,
                  action: int,
@@ -58,7 +59,6 @@ class Running(Training):
     """Тренировка: бег."""
     COEFF_CALL_1: int = 18
     COEFF_CALL_2: int = 20
-    MINUTES: int = 60
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -80,7 +80,6 @@ class SportsWalking(Training):
     COEFF_CALL_1: float = 0.035
     COEFF_CALL_2: float = 0.029
     COEFF_CALL_3: int = 2
-    MINUTES: int = 60
 
     def __init__(self,
                  action,
@@ -141,8 +140,8 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: List[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    dict_sport = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
-    type_training = dict_sport[workout_type]
+    sport = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
+    type_training = sport[workout_type]
     return type_training(*data)
 
 
