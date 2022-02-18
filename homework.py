@@ -45,8 +45,7 @@ class Training:
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         raise NotImplementedError(
-            'Не определён класс: ', self.__class__.__name__
-            )
+            'Не определён класс: ', self.__class__.__name__)
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -127,7 +126,7 @@ class Swimming(Training):
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         return ((self.get_mean_speed()
-                + self.COEFF_CALL_1)
+                 + self.COEFF_CALL_1)
                 * self.COEFF_CALL_2 * self.weight)
 
     def get_mean_speed(self) -> float:
@@ -143,8 +142,8 @@ class Swimming(Training):
 def read_package(workout_type: str, data: List[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
     dict_sport = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
-    type_treinung = dict_sport[workout_type]
-    return type_treinung(*data)
+    type_treining = dict_sport[workout_type]
+    return type_treining(*data)
 
 
 def main(training: Training) -> None:
