@@ -66,14 +66,6 @@ class Running(Training):
                 - self.COEFF_CALL_2) * self.weight
                 / self.M_IN_KM * (self.duration * self.MINUTES))
 
-    def get_mean_speed(self) -> float:
-        """Получить среднюю скорость движения."""
-        return super().get_mean_speed()
-
-    def get_distance(self) -> float:
-        """Получить дистанцию в км."""
-        return super().get_distance()
-
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
@@ -95,14 +87,6 @@ class SportsWalking(Training):
                 + (self.get_distance() ** self.COEFF_CALL_3
                  // self.height) * self.COEFF_CALL_2
                 * self.weight) * self.duration * self.MINUTES)
-
-    def get_mean_speed(self) -> float:
-        """Получить среднюю скорость движения."""
-        return super().get_mean_speed()
-
-    def get_distance(self) -> float:
-        """Получить дистанцию в км."""
-        return super().get_distance()
 
 
 class Swimming(Training):
@@ -132,10 +116,6 @@ class Swimming(Training):
         """Получить среднюю скорость движения."""
         return (self.length_pool * self.count_pool
                 / self.M_IN_KM / self.duration)
-
-    def get_distance(self) -> float:
-        """Получить дистанцию в км."""
-        return super().get_distance()
 
 
 def read_package(workout_type: str, data: List[int]) -> Training:
